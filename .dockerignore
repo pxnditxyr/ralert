@@ -1,0 +1,11 @@
+
+target
+
+.git
+
+data
+
+.env
+.prod.env
+
+.dockerignore
