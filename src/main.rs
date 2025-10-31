@@ -2,10 +2,12 @@ use std::{net::SocketAddr, sync::Arc};
 
 use axum::{routing::get, Router};
 use ralert::{
-    application::use_cases::health_check_uc_impl::HealthCheckUseCaseImpl,
-    infrastructure::config::environments::ENVIRONMENTS,
+    infrastructure::{
+        config::environments::ENVIRONMENTS,
+        di::container::Container,
+        web::app_state::AppState
+    },
     presentation::web::health_handler::health_handler,
-    AppState
 };
 
 
@@ -14,10 +16,10 @@ async fn main() {
     println!("Hello to Ralert!!! 🚀 by Pxndxs 🐼");
     println!("Server running on port: {}", ENVIRONMENTS.server_port);
 
-    let health_check_uc_impl = Arc::new(HealthCheckUseCaseImpl::new());
+    let container = Container::new();
 
     let app_state = Arc::new(AppState {
-        health_check_use_case: health_check_uc_impl,
+        health_check_use_case: container.health_check_uc,
     });
 
     let app = Router::new()

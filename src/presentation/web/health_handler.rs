@@ -2,13 +2,12 @@ use std::sync::Arc;
 
 use axum::{extract::State, Json};
 
-use crate::AppState;
-
 use crate::{
     domain::{
         dtos::health_status_dto::HealthStatusDto,
         errors::app_error::AppError
     },
+    infrastructure::web::app_state::AppState,
 };
 
 pub async fn health_handler(
