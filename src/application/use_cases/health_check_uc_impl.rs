@@ -1,13 +1,12 @@
 use async_trait::async_trait;
 
 use crate::domain::{
-    dtos::health_status_dto::HealthStatusDto,
-    errors::app_error::AppError,
-    use_cases::health_check_uc::HealthCheckUseCase
+    dtos::health_status_dto::HealthStatusDto, errors::app_error::AppError,
+    use_cases::health_check_uc::HealthCheckUseCase,
 };
 
+#[derive(Default)]
 pub struct HealthCheckUseCaseImpl;
-
 
 impl HealthCheckUseCaseImpl {
     pub fn new() -> Self {

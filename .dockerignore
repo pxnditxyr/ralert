@@ -1,5 +1,6 @@
-
-target
+/logs
+/target
+/data
 
 .git
 
@@ -9,3 +10,5 @@ data
 .prod.env
 
 .dockerignore
+
+ralert.db

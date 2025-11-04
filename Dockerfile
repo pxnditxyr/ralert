@@ -1,20 +1,13 @@
-
-FROM rust:latest AS builder
-
-RUN apt-get update && apt-get install -y ca-certificates
-
-WORKDIR /usr/src/ralert
-
+FROM rust:alpine AS builder
+RUN apk add --no-cache musl-dev
+WORKDIR /app
 COPY . .
-
 RUN cargo build --release
 
-
-FROM debian:bookworm-slim AS runtime
-
+FROM alpine:latest
 WORKDIR /app
-
-COPY --from=builder /usr/src/ralert/target/release/ralert /app/ralert
-
-
+RUN mkdir -p /app/data
+COPY --from=builder /app/target/release/ralert .
+COPY --from=builder /app/migrations ./migrations
+EXPOSE 8003
 CMD ["./ralert"]

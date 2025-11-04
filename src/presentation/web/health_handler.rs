@@ -1,12 +1,8 @@
+use axum::{Json, extract::State};
 use std::sync::Arc;
 
-use axum::{extract::State, Json};
-
 use crate::{
-    domain::{
-        dtos::health_status_dto::HealthStatusDto,
-        errors::app_error::AppError
-    },
+    domain::{dtos::health_status_dto::HealthStatusDto, errors::app_error::AppError},
     infrastructure::web::app_state::AppState,
 };
 

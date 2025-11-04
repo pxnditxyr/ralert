@@ -1,6 +1,10 @@
+/logs
 /target
-
 /data
+
+ralert.db
 
 .env
 .prod.env
+
+.DS_Store

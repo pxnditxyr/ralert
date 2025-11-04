@@ -1,0 +1,20 @@
+
+### Variables
+@baseUrl = http://localhost:8003
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1Njk1OTc0ZC0wYjdhLTRhZTktODVmZi0zYjRmODdiYmYyMWYiLCJlbWFpbCI6InVzZXJAcmFsZXJ0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzYyMzU0NDQ4LCJpYXQiOjE3NjIyNjgwNDh9.CUMRBAYGE4PLQto3dnziX4Ly-6eCQwHlUppY8wc6Wdc
+
+### 1. Health Check
+GET {{baseUrl}}/health
+
+### 2. Sign In
+POST {{baseUrl}}/api/v1/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "user@ralert.com",
+  "password": "example"
+}
+
+### 3. Get Profile (Protected - Requires JWT)
+GET {{baseUrl}}/api/v1/profile
+Authorization: Bearer {{token}}
