@@ -5,7 +5,9 @@
 ![Architecture](https://img.shields.io/badge/architecture-clean-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-A **lightweight, fast, and secure Network Operations Center (NOC)** built with Rust following Clean Architecture principles. Perfect for monitoring services with minimal resource consumption.
+The foundation of a **lightweight Network Operations Center (NOC)**, built with Rust following Clean Architecture principles. The goal is monitoring services with minimal resource consumption.
+
+> **Current status:** the API foundation is implemented: Clean Architecture layout, JWT sign-in, role-based access, a health check and automatic SQLite migrations. Service monitoring, alerts and the dashboard are in the Roadmap section below and are not implemented yet.
 
 ---
 
@@ -101,7 +103,7 @@ src/
 
 2. **Set up environment variables:**
    ```bash
-   cp .env.example .env
+   cp .example.dev.env .env
    ```
 
 3. **Configure your `.env` file:**
@@ -262,11 +264,6 @@ Example:
 docker build -t ralert:latest .
 ```
 
-### Run with Docker Compose
-```bash
-docker-compose up -d
-```
-
 ---
 
 ## 🗺️ Roadmap
@@ -340,9 +337,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## ⚡ Performance
+## ⚡ Performance goals
 
-Ralert is designed for minimal resource consumption:
+Ralert is designed for minimal resource consumption. These are design targets and have **not been benchmarked yet**:
 
 - **Memory footprint:** ~10-20MB idle
 - **CPU usage:** <1% idle
@@ -354,11 +351,9 @@ Ralert is designed for minimal resource consumption:
 ## 🔒 Security
 
 - ✅ JWT-based authentication
-- ✅ Bcrypt password hashing (cost 10)
+- ✅ Bcrypt password hashing
 - ✅ Role-based access control (RBAC)
 - ✅ SQL injection protection (SQLx prepared statements)
-- ✅ CORS configuration
-- ✅ Input validation
 - ⚠️ Rate limiting (planned)
 - ⚠️ Request size limits (planned)
 
